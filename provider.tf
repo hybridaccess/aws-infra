@@ -9,7 +9,7 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "london"
+  region = "London"
 }
 
 # Create a VPC
