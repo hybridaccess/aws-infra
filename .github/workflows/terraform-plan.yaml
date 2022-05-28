@@ -21,7 +21,7 @@ jobs:
 
   tf-plan:
     runs-on: ubuntu-latest
-    name: terraform fmt
+    name: terraform plan
     needs:
       - fmt-check
 
