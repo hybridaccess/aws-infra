@@ -7,9 +7,9 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 jobs:
-  fmt-check:
+  tf-apply:
     runs-on: ubuntu-latest
-    name: terraform fmt
+    name: terraform apply
 
     steps:
       - name: Checkout
