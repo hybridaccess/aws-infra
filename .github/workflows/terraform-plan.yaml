@@ -1,0 +1,17 @@
+name: terraform
+
+on: [push]
+
+jobs:
+  fmt-check:
+    runs-on: ubuntu-latest
+    name: terraform fmt
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ACCESS_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: terraform fmt
+        uses: dflook/terraform-fmt-check@v1
+
