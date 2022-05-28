@@ -2,7 +2,7 @@
 resource "aws_vpc" "this" {
   cidr_block = "192.168.10.0/24"
   tags = {
-    name = "cassandra-vpc"
+    Name = "cassandra-vpc"
   }
 }
 

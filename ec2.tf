@@ -1,6 +1,6 @@
 resource "aws_network_interface" "this" {
   subnet_id   = aws_subnet.this.id
-  private_ips = ["172.16.10.100"]
+  private_ips = ["192.168.10.10"]
 
   tags = {
     Name = "primary_network_interface"
