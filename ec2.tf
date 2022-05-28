@@ -8,7 +8,7 @@ resource "aws_network_interface" "this" {
 }
 
 resource "aws_instance" "this" {
-  ami           = "ami-005e54dee72cc1d00" # eu-west-a
+  ami           = "ami-0d729d2846a86a9e7" # eu-west-a
   instance_type = "t2.micro"
 
   network_interface {
