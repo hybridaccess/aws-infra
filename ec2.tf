@@ -15,8 +15,4 @@ resource "aws_instance" "this" {
     network_interface_id = aws_network_interface.this.id
     device_index         = 0
   }
-
-  credit_specification {
-    cpu_credits = "unlimited"
-  }
 }
