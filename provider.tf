@@ -4,6 +4,11 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 3.0"
     }
+    backend "s3" {
+      bucket = "hybridaccessltd"
+      key    = "terraform/state"
+      region = "eu-west-2"
+    }
   }
 }
 
