@@ -10,7 +10,7 @@ terraform {
   }
   backend "s3" {
     bucket = "hybridaccessltd"
-    key    = "terraform/state"
+    key    = "terraform/state/tfstate.tf"
     region = "eu-west-2"
   }
 }
