@@ -1,10 +1,12 @@
 name: terraform
 
-on: [push]
+on:
+  pull_request
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ACCESS_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   fmt-check:
@@ -34,19 +36,3 @@ jobs:
 
       - name: terraform plan
         uses: dflook/terraform-plan@v1
-
-
-  tf-apply:
-    runs-on: ubuntu-latest
-    name: terraform apply
-    needs:
-      - tf-plan
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: terraform apply
-        uses: dflook/terraform-apply@v1
-        with:
-          auto_approve: true
