@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install latest Azure CLI
-        run: curl -skL https://aka.ms/InstallAzureCLIDeb | bash
+        run: curl -skL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
       - name: terraform apply
         uses: dflook/terraform-apply@v1
