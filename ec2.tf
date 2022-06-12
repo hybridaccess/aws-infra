@@ -62,7 +62,7 @@ resource "aws_instance" "bastion" {
     volume_size           = "30"
   }
 
-  key_name = aws_key_pair.bastion
+  key_name = aws_key_pair.bastion.key_name
 
 
   network_interface {
