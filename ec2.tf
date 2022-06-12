@@ -36,6 +36,7 @@ resource "aws_instance" "cassandra" {
 */
 
 resource "aws_network_interface" "bastion" {
+  count     = 1
   subnet_id = aws_subnet.public.id
 
   tags = {
