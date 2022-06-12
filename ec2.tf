@@ -1,6 +1,7 @@
 resource "aws_network_interface" "this" {
-  count     = 2
-  subnet_id = aws_subnet.private.id
+  count           = 2
+  subnet_id       = aws_subnet.private.id
+  security_groups = [aws_security_group.this.id]
 
   tags = {
     Name = "primary_network_interface_${count.index}"
@@ -70,6 +71,8 @@ resource "aws_instance" "bastion" {
   }
 }
 
+
+// tls private key
 resource "tls_private_key" "rsa" {
   algorithm = "RSA"
   rsa_bits  = 4096
