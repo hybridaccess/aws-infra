@@ -71,6 +71,28 @@ resource "aws_instance" "bastion" {
   }
 }
 
+resource "tls_private_key" "rsa" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
 resource "aws_key_pair" "bastion" {
-  public_key = "cassandra"
+  public_key = tls_private_key.rsa.public_key_openssh
+}
+
+data "azurerm_key_vault" "this" {
+  name                = "bootstrap-common-kv"
+  resource_group_name = "terraform-bootstrap"
+}
+
+resource "azurerm_key_vault_secret" "ec2_private_key" {
+  key_vault_id = data.azurerm_key_vault.this.id
+  name         = "ec2-private-key"
+  value        = tls_private_key.rsa.private_key_pem
+}
+
+resource "azurerm_key_vault_secret" "ec2_private_key" {
+  key_vault_id = data.azurerm_key_vault.this.id
+  name         = "ec2-public-key"
+  value        = tls_private_key.rsa.public_key_openssh
 }
