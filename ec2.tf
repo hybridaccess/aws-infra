@@ -46,7 +46,7 @@ resource "aws_network_interface" "bastion" {
 
 resource "aws_instance" "bastion" {
   count                   = 1
-  ami                     = "ami-05ad77e76f6b349d6" # eu-west-a
+  ami                     = "ami-0bd2099338bc55e6d" # eu-west-a
   instance_type           = "t2.micro"
   availability_zone       = "eu-west-2a"
   hibernation             = false
