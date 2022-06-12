@@ -1,5 +1,5 @@
 resource "aws_network_interface" "this" {
-  count           = 2
+  count           = var.ec2_count
   subnet_id       = aws_subnet.private.id
   security_groups = [aws_security_group.this.id]
 
@@ -9,7 +9,7 @@ resource "aws_network_interface" "this" {
 }
 
 resource "aws_instance" "cassandra" {
-  count                   = 3
+  count                   = var.ec2_count
   ami                     = "ami-0bd2099338bc55e6d" # eu-west-a
   instance_type           = "t2.micro"
   availability_zone       = "eu-west-2a"
