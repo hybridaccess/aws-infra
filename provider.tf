@@ -7,6 +7,10 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 3.0"
     }
+
+    azurerm = {
+      source = "hashicorp/azurerm"
+    }
   }
   backend "s3" {
     bucket = "hybridaccessltd"
