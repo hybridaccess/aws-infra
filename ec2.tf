@@ -36,8 +36,9 @@ resource "aws_instance" "cassandra" {
 */
 
 resource "aws_network_interface" "bastion" {
-  count     = 1
-  subnet_id = aws_subnet.public.id
+  count           = 1
+  subnet_id       = aws_subnet.public.id
+  security_groups = [aws_security_group.this.id]
 
   tags = {
     Name = "primary_network_interface"
