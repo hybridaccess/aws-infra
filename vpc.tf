@@ -89,7 +89,8 @@ resource "aws_internet_gateway" "this" {
 // Security groups
 
 resource "aws_security_group" "this" {
-  name = "private"
+  name   = "cassandra"
+  vpc_id = aws_vpc.this.id
 }
 
 resource "aws_security_group_rule" "allow_all" {
