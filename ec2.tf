@@ -26,7 +26,7 @@ resource "aws_instance" "cassandra" {
   }
 
   key_name = aws_key_pair.bastion.key_name
-  
+
   network_interface {
     network_interface_id = aws_network_interface.this[count.index].id
     device_index         = 0
