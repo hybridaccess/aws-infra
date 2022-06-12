@@ -2,6 +2,7 @@ resource "aws_network_interface" "this" {
   count           = var.ec2_count
   subnet_id       = aws_subnet.private.id
   security_groups = [aws_security_group.this.id]
+  private_ip      = "10.0.0.${var.ec2_count + 5}"
 
   tags = {
     Name = "primary_network_interface_${count.index}"
