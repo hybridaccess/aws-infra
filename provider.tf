@@ -19,3 +19,8 @@ terraform {
 provider "aws" {
   region = "eu-west-2"
 }
+
+# Configure the Azure Provider
+provider "azurerm" {
+  features {}
+}
