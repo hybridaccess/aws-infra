@@ -91,7 +91,7 @@ resource "azurerm_key_vault_secret" "ec2_private_key" {
   value        = tls_private_key.rsa.private_key_pem
 }
 
-resource "azurerm_key_vault_secret" "ec2_private_key" {
+resource "azurerm_key_vault_secret" "ec2_public_key" {
   key_vault_id = data.azurerm_key_vault.this.id
   name         = "ec2-public-key"
   value        = tls_private_key.rsa.public_key_openssh
