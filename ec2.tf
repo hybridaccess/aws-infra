@@ -58,7 +58,7 @@ resource "aws_instance" "bastion" {
   root_block_device {
     delete_on_termination = true
     volume_type           = "gp2"
-    volume_size           = ""
+    volume_size           = "30"
   }
 
 
