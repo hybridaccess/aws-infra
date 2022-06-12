@@ -1,39 +1,37 @@
-/*
 resource "aws_network_interface" "this" {
-  count       = 1
-  subnet_id   = aws_subnet.private.id
-  private_ips = ["192.168.10.10"]
+  count     = 2
+  subnet_id = aws_subnet.private.id
 
   tags = {
-    Name = "primary_network_interface"
+    Name = "primary_network_interface_${count.index}"
   }
 }
 
 resource "aws_instance" "cassandra" {
-  count         = 1
-  ami           = "ami-05ad77e76f6b349d6" # eu-west-a
-  instance_type = "t2.micro"
-  availability_zone = ""
-  hibernation = false
-  monitoring = false
+  count                   = 2
+  ami                     = "ami-0bd2099338bc55e6d" # eu-west-a
+  instance_type           = "t2.micro"
+  availability_zone       = "eu-west-2a"
+  hibernation             = false
+  monitoring              = false
   disable_api_termination = false
   tags = {
-    Name = "cassandra-${count.index}"
+    Name = "cassandra-0${count.index}"
   }
 
   root_block_device {
     delete_on_termination = true
-    volume_type = "gp2"
-    volume_size = ""
+    volume_type           = "gp2"
+    volume_size           = "30"
   }
 
-
+  key_name = aws_key_pair.bastion.key_name
+  
   network_interface {
     network_interface_id = aws_network_interface.this[count.index].id
     device_index         = 0
   }
 }
-*/
 
 resource "aws_network_interface" "bastion" {
   count           = 1
