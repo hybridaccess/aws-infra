@@ -85,9 +85,18 @@ resource "aws_internet_gateway" "this" {
   }
 }
 
-// NAT Gateway
 
-resource "aws_nat_gateway" "this" {
-  subnet_id = aws_subnet.private.id
+// Security groups
 
+resource "aws_security_group" "this" {
+  name = "private"
+}
+
+resource "aws_security_group_rule" "allow_all" {
+  type              = "egress"
+  from_port         = 0
+  protocol          = "-1"
+  to_port           = 0
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.this.id
 }
