@@ -18,7 +18,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Install latest Azure CLI
+        run: curl -skL https://aka.ms/InstallAzureCLIDeb | bash
+
       - name: terraform apply
         uses: dflook/terraform-apply@v1
         with:
           auto_approve: true
+
