@@ -9,7 +9,7 @@ resource "aws_network_interface" "this" {
 }
 
 resource "aws_instance" "cassandra" {
-  count                   = 2
+  count                   = 3
   ami                     = "ami-0bd2099338bc55e6d" # eu-west-a
   instance_type           = "t2.micro"
   availability_zone       = "eu-west-2a"
